@@ -1,9 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from '@testing-library/react';
 import App from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+test('App loads and finds the menu', () => {
+  const { getAllByTestId, getByTestId } = render(<App />);
+  
+  getByTestId(/menu/i)
+
 });
+
+test('Test if data loads', () => {
+  const { getAllByTestId} = render(<App />);
+
+  getAllByTestId(/united states/i)
+})
